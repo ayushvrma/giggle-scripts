@@ -1,9 +1,7 @@
 import torch
 from models.network_swinir import SwinIR as net
 
-# Step 1: Define and load the SwinIR model
 def define_model(scale=4):
-    # Define the SwinIR model for real-world super-resolution
     model = net(
         upscale=scale,
         in_chans=3,
@@ -17,7 +15,7 @@ def define_model(scale=4):
         upsampler='nearest+conv',
         resi_connection='1conv'
     )
-    param_key_g = 'params_ema'  # For real-world SR, use params_ema
+    param_key_g = 'params_ema'
     return model, param_key_g
 
 model_path = "experiments/pretrained_models/003_realSR_BSRGAN_DFO_s64w8_SwinIR-M_x4_GAN.pth"
